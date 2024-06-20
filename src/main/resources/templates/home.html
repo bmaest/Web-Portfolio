@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/viewport.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">Brandon Maestas</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="nav">
+        <div class="logo">Brandon Maestas</div>
+        <div class="menu">
+            <div class="icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <ul>
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="profile">
+        <div class="section-pic-container">
+            <img src="/files/Profile.png" alt="Brandon Maestas Profile Picture">
+        </div>
+        <div class="section-text">
+            <p class="section-text-p1">Hello, I'm</p>
+            <h1 class="title">Brandon Maestas</h1>
+            <p class="section-text-p2">IT Technician</p>
+            <div class="btn-container">
+                <button class="btn-color-2" onclick="window.open('/files/Resume.pdf')">Download CV</button>
+                <button class="btn-color-1" onclick="window.location.replace('./#contact')">Contact Me</button>
+            </div>
+            <div id="socials">
+                <img src="/files/linkedin-logo.svg" alt="LinkedIn Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/brandonmaestas'">
+                <img src="/files/github-logo.png" alt="Github Profile" class="icon" onclick="location.href='https://github.com/bmaest'">
+            </div>
+        </div>
+    </section>
+    <script src="/src/script.js"></script>
+</body>
+</html>
