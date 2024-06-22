@@ -13,7 +13,7 @@ This repository contains the source code for a responsive web portfolio designed
 - Bootstrap
 - HTML/CSS/JavaScript
 
-##Viewing the Project
+## Viewing the Project
 This project is hosted on Oracle and can be viewed at www.brandonmaestas.com.
   
 
