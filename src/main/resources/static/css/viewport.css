@@ -14,7 +14,7 @@
     #nav{
         display: flex;
     }
-    #experience, .experience-details-container{
+    #skills, .skills-details-container{
         margin-top: 2rem;
     }
     #profile, .section-container{
@@ -62,7 +62,7 @@
     .contact-info-container p, .nav-links li a{
         font-size: 1rem;
     }
-    .experience-subtitle{
+    .skills-subtitle{
         font-size: 1.25rem;
     }
     .logo{
