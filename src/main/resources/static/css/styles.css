@@ -335,7 +335,7 @@ article .icon{
 /*Footer*/
 footer{
     position: relative;
-    height: 26vh;
+    height: 15vh;
     margin: 0 1rem;
 }
 .footer li a {
@@ -350,4 +350,7 @@ footer{
     bottom: 5rem;
     right: 4rem;
     transform: rotate(180deg);
+}
+#frame{
+    height: 100px;
 }
