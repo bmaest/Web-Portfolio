@@ -24,7 +24,7 @@ jobs:
 
       - name: SSH and run commands
         run: |
-          ssh -o StrictHostKeyChecking=no root@141.148.164.126 << 'EOF'
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.ARTIFACT_HOST }} << 'EOF'
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
           if [ -n "$PID" ]; then
             kill $PID
