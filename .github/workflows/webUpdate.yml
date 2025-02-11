@@ -1,0 +1,60 @@
+name: Deploy on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH key
+        run: |
+          env
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ARTIFACT_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 22 ${{ secrets.ARTIFACT_HOST }} >> ~/.ssh/known_hosts
+          sudo apt-get install sshpass
+
+      - name: SSH and run commands
+        run: |
+          ssh -o StrictHostKeyChecking=no root@141.148.164.126 << 'EOF'
+          PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
+          if [ -n "$PID" ]; then
+            kill $PID
+            echo "Killed process with PID: $PID"
+          else
+            echo "No running process found."
+          fi
+
+          if [ -d "running" ]; then
+            mv running old
+            echo "Renamed 'running' directory to 'old'."
+          else
+            echo "'running' directory not found."
+          fi
+
+          mkdir running
+          echo "Created 'running' directory."
+
+          cd running
+          echo "Moved into 'running' directory."
+
+          git clone https://github.com/bmaest/Web-Portfolio/
+          echo "Cloned repository."
+
+          cd Web-Portfolio
+          echo "Moved into 'Web-Portfolio' directory."
+
+          mvn clean install
+          echo "Compiling web application"
+
+          cd target
+          echo "sudo nohup java -jar *.jar &"
+          EOF
