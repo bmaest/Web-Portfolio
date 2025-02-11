@@ -26,8 +26,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF'
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
-           if [ -n "$PID" ]; then
-              kill $PID
+            if [ -n "$PID" ]; then
+              sudo kill $PID
               echo "Killed process with PID: $PID"
             else
               echo "No running process found."
