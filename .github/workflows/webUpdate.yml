@@ -26,38 +26,43 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF'
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
-          touch test.txt
-          EOF
-          
-#          if [ -n "$PID" ]; then
-#           kill $PID
-#           echo "Killed process with PID: $PID"
-#         else
-#           echo "No running process found."
-#         fi
-#
-#         if [ -d "running" ]; then
-#           mv running old
-#           echo "Renamed 'running' directory to 'old'."
-#         else
-#           echo "'running' directory not found."
-#         fi
-#
-#         mkdir running
-#         echo "Created 'running' directory."
-#
-#         cd running
-#         echo "Moved into 'running' directory."
-#
-#         git clone https://github.com/bmaest/Web-Portfolio/
-#         echo "Cloned repository."
-#
-#         cd Web-Portfolio
-#         echo "Moved into 'Web-Portfolio' directory."
-#
-#         mvn clean install
-#         echo "Compiling web application"
-#
-#         cd target
-#         echo "sudo nohup java -jar *.jar &"
-#         EOF
+           if [ -n "$PID" ]; then
+              kill $PID
+              echo "Killed process with PID: $PID"
+            else
+              echo "No running process found."
+            fi
+
+            if [ -d "old" ]; then
+              rm -rf old
+              echo "Removed existing 'old' directory."
+            fi
+  
+            if [ -d "running" ]; then
+              mv running old
+              echo "Renamed 'running' directory to 'old'."
+            else
+              echo "'running' directory not found."
+            fi
+  
+            mkdir running
+            echo "Created 'running' directory."
+  
+            cd running
+            echo "Moved into 'running' directory."
+  
+            git clone https://github.com/bmaest/Web-Portfolio/
+            echo "Cloned repository."
+  
+            cd Web-Portfolio
+            echo "Moved into 'Web-Portfolio' directory."
+
+            mvn clean install || { echo 'Maven install failed' ; exit 1; }
+            echo "Maven install succeeded"
+
+            cd target
+            echo "Moved into target directory"
+
+            sudo nohup java -jar *webPortfolio-0.0.1-SNAPSHOT.jar &
+            echo "Running web application as background process"
+            EOF
