@@ -26,35 +26,38 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@${{ secrets.ARTIFACT_HOST }} << 'EOF'
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
-          if [ -n "$PID" ]; then
-            kill $PID
-            echo "Killed process with PID: $PID"
-          else
-            echo "No running process found."
-          fi
-
-          if [ -d "running" ]; then
-            mv running old
-            echo "Renamed 'running' directory to 'old'."
-          else
-            echo "'running' directory not found."
-          fi
-
-          mkdir running
-          echo "Created 'running' directory."
-
-          cd running
-          echo "Moved into 'running' directory."
-
-          git clone https://github.com/bmaest/Web-Portfolio/
-          echo "Cloned repository."
-
-          cd Web-Portfolio
-          echo "Moved into 'Web-Portfolio' directory."
-
-          mvn clean install
-          echo "Compiling web application"
-
-          cd target
-          echo "sudo nohup java -jar *.jar &"
+          touch test.txt
           EOF
+          
+#          if [ -n "$PID" ]; then
+#           kill $PID
+#           echo "Killed process with PID: $PID"
+#         else
+#           echo "No running process found."
+#         fi
+#
+#         if [ -d "running" ]; then
+#           mv running old
+#           echo "Renamed 'running' directory to 'old'."
+#         else
+#           echo "'running' directory not found."
+#         fi
+#
+#         mkdir running
+#         echo "Created 'running' directory."
+#
+#         cd running
+#         echo "Moved into 'running' directory."
+#
+#         git clone https://github.com/bmaest/Web-Portfolio/
+#         echo "Cloned repository."
+#
+#         cd Web-Portfolio
+#         echo "Moved into 'Web-Portfolio' directory."
+#
+#         mvn clean install
+#         echo "Compiling web application"
+#
+#         cd target
+#         echo "sudo nohup java -jar *.jar &"
+#         EOF
