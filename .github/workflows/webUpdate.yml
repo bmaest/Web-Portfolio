@@ -77,32 +77,16 @@ jobs:
             echo "Running web application as background process"
           EOF
 
-      - name: Trigger networkVerification.yml Workflow
+      - name: Verify web server is online
         run: |
-          curl -X POST -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows/networkVerification.yml/dispatches \
-          -d '{"ref":"main"}'
-
-          STATUS="in_progress"
-          while [ "$STATUS" == "in_progress" ]; do
-            sleep 30
-            STATUS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID \
-              | jq -r '.status')
-            echo "Workflow status: $STATUS"
+          CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+          echo "Initial HTTP status code: $CODE"
+          until [ "$CODE" = "200" ]; do
+            echo "Waiting for first VM to be online... HTTP status code: $CODE"
+            sleep 10
+            CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
           done
-
-          CONCLUSION=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID \
-            | jq -r '.conclusion')
-          
-          if [ "$CONCLUSION" == "success" ]; then
-            echo "webUpdate.yml Workflow completed successfully"
-          else
-            echo "webUpdate.yml Workflow failed"
-            exit 1
-          fi
+          echo "First VM is online."
 
       - name: Set up SSH key for second VM
         run: |
