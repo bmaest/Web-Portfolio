@@ -79,12 +79,12 @@ jobs:
 
       - name: Verify web server is online
         run: |
-          CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+          CODE=$(curl -w '%{http_code}' -s -o /dev/null http://${{ secrets.ARTIFACT_HOST }})
           echo "Initial HTTP status code: $CODE"
-          until [ "$CODE" = "200" ]; do
-            echo "Waiting for first VM to be online... HTTP status code: $CODE"
+          until [ "$CODE" -eq 200 ]; do
+            echo "Waiting for the first VM to be online... HTTP status code: $CODE"
             sleep 10
-            CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+            CODE=$(curl -w '%{http_code}' -s -o /dev/null http://${{ secrets.ARTIFACT_HOST }})
           done
           echo "First VM is online."
 
