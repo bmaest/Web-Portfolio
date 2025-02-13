@@ -76,17 +76,33 @@ jobs:
             sudo nohup java -jar *webPortfolio-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
             echo "Running web application as background process"
           EOF
-          
-      - name: Wait for first VM to be online
+
+      - name: Trigger networkVerification.yml Workflow
         run: |
-          CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
-          echo "Initial HTTP status code: $CODE"
-          until [ "$CODE" = "200" ]; do
-            echo "Waiting for first VM to be online... HTTP status code: $CODE"
-            sleep 10
-            CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+          curl -X POST -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/actions/workflows/networkVerification.yml/dispatches \
+          -d '{"ref":"main"}'
+
+          STATUS="in_progress"
+          while [ "$STATUS" == "in_progress" ]; do
+            sleep 30
+            STATUS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID \
+              | jq -r '.status')
+            echo "Workflow status: $STATUS"
           done
-          echo "First VM is online"
+
+          CONCLUSION=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID \
+            | jq -r '.conclusion')
+          
+          if [ "$CONCLUSION" == "success" ]; then
+            echo "webUpdate.yml Workflow completed successfully"
+          else
+            echo "webUpdate.yml Workflow failed"
+            exit 1
+          fi
 
       - name: Set up SSH key for second VM
         run: |
@@ -129,7 +145,7 @@ jobs:
             echo "Cloned repository"
   
             cd Web-Portfolio
-            echo "Moved into 'Web-Portfolio' directory."
+            echo "Moved into 'Web-Portfolio' directory"
 
             export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
