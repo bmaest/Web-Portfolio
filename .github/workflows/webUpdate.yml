@@ -77,6 +77,9 @@ jobs:
             echo "Running web application as background process"
           EOF
 
+      - name: Wait for application to start
+        run: sleep 30  
+
       - name: Verify web server is online
         run: |
           CODE=$(curl -w '%{http_code}' -s -o /dev/null http://${{ secrets.ARTIFACT_HOST }})
