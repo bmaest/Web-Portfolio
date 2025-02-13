@@ -13,18 +13,90 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up SSH key
+      - name: Set up SSH key for first VM
         run: |
-          env
           mkdir -p ~/.ssh
           echo "${{ secrets.ARTIFACT_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p 22 ${{ secrets.ARTIFACT_HOST }} >> ~/.ssh/known_hosts
-          sudo apt-get install sshpass
 
-      - name: SSH and run commands
+      - name: Deploy to first VM
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF
+          
+          PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
+            if [ -n "$PID" ]; then
+              sudo kill $PID
+              echo "Killed process with PID: $PID"
+            else
+              echo "No running process found."
+            fi
+
+            if [ -d "old" ]; then
+              rm -rf old
+              echo "Removed existing 'old' directory."
+            fi
+  
+            if [ -d "running" ]; then
+              mv running old
+              echo "Renamed 'running' directory to 'old'."
+            else
+              echo "'running' directory not found."
+            fi
+  
+            mkdir running
+            echo "Created 'running' directory."
+  
+            cd running
+            echo "Moved into 'running' directory."
+  
+            git clone https://github.com/bmaest/Web-Portfolio/
+            echo "Cloned repository."
+  
+            cd Web-Portfolio
+            echo "Moved into 'Web-Portfolio' directory."
+
+            export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+            export PATH=$JAVA_HOME/bin:$PATH
+            mvn clean install || { echo 'Maven install failed' ; exit 1; }
+            echo "Maven install succeeded"
+
+            sudo chown -R www-data:www-data /home/ubuntu/running/Web-Portfolio/src/main/resources/static
+            echo "Change the owner to www-data"
+
+            sudo chmod -R 755 /home/ubuntu/running/Web-Portfolio/src/main/resources/static
+            echo "Set the necessary permissions"
+
+            sudo systemctl restart nginx
+            echo "Restarted Nginx process"
+
+            cd target
+            echo "Moved into target directory"
+
+            sudo nohup java -jar *webPortfolio-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+            echo "Running web application as background process"
+          
+      - name: Wait for first VM to be online
+        run: |
+          FIRST_VM_IP="${{ secrets.ARTIFACT_HOST_1 }}"
+          CHECK_CMD="curl -s -o /dev/null -w '%{http_code}' http://${ARTIFACT_HOST_1}"
+          until [ "$($CHECK_CMD)" = "200" ]; do
+            echo "Waiting for first VM to be online..."
+            sleep 10
+          done
+          echo "First VM is online."
+
+      - name: Set up SSH key for second VM
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ARTIFACT_SSH_KEY2 }}" > ~/.ssh/id_rsa_2
+          chmod 600 ~/.ssh/id_rsa_2
+          ssh-keyscan -p 22 ${{ secrets.ARTIFACT_HOST2 }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to second VM
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_2 bmaes@${{ secrets.ARTIFACT_HOST2 }} << 'EOF'
+          
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
             if [ -n "$PID" ]; then
               sudo kill $PID
