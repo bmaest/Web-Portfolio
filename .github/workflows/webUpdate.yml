@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to first VM
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.ARTIFACT_HOST }} << 'EOF'
           
           PID=$(ps -ef | grep "java -jar" | grep -v grep | awk '{print $2}')
             if [ -n "$PID" ]; then
