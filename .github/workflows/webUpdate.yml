@@ -78,7 +78,7 @@ jobs:
           
       - name: Wait for first VM to be online
         run: |
-          CHECK_CMD="curl -v -s -o /dev/null -w '%{http_code}' http://141.148.164.126
+          CHECK_CMD="curl -v -s -o /dev/null -w '%{http_code}' http://141.148.164.126"
           STATUS_CODE=$($CHECK_CMD)
           echo "Initial HTTP status code: $STATUS_CODE"
           until [ "$STATUS_CODE" = "200" ]; do
