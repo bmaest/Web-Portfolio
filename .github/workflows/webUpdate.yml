@@ -78,8 +78,9 @@ jobs:
           
       - name: Wait for first VM to be online
         run: |
-          CHECK_CMD="curl -s -o /dev/null -w '%{http_code}' http://${{ secrets.ARTIFACT_HOST }}"
+          CHECK_CMD="curl -v -s -o /dev/null -w '%{http_code}' http://${{ secrets.ARTIFACT_HOST }}"
           STATUS_CODE=$($CHECK_CMD)
+          echo "Initial HTTP status code: $STATUS_CODE"
           until [ "$STATUS_CODE" = "200" ]; do
             echo "Waiting for first VM to be online... HTTP status code: $STATUS_CODE"
             sleep 10
