@@ -1,0 +1,20 @@
+name: Verify VM Status
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify_status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for first VM to be online
+        run: |
+          CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+          echo "Initial HTTP status code: $CODE"
+          until [ "$CODE" = "200" ]; do
+            echo "Waiting for first VM to be online... HTTP status code: $CODE"
+            sleep 10
+            CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
+          done
+          echo "First VM is online."
