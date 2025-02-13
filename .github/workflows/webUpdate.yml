@@ -29,32 +29,32 @@ jobs:
               sudo kill $PID
               echo "Killed process with PID: $PID"
             else
-              echo "No running process found."
+              echo "No running process found"
             fi
 
             if [ -d "old" ]; then
               sudo rm -rf old
-              echo "Removed existing 'old' directory."
+              echo "Removed existing 'old' directory"
             fi
   
             if [ -d "running" ]; then
               mv running old
-              echo "Renamed 'running' directory to 'old'."
+              echo "Renamed 'running' directory to 'old'"
             else
-              echo "'running' directory not found."
+              echo "'running' directory not found"
             fi
   
             mkdir running
-            echo "Created 'running' directory."
+            echo "Created 'running' directory"
   
             cd running
-            echo "Moved into 'running' directory."
+            echo "Moved into 'running' directory"
   
             git clone https://github.com/bmaest/Web-Portfolio/
-            echo "Cloned repository."
+            echo "Cloned repository"
   
             cd Web-Portfolio
-            echo "Moved into 'Web-Portfolio' directory."
+            echo "Moved into 'Web-Portfolio' directory"
 
             export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
@@ -85,7 +85,7 @@ jobs:
             sleep 10
             CODE=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${{ secrets.ARTIFACT_HOST }})
           done
-          echo "First VM is online."
+          echo "First VM is online"
 
       - name: Set up SSH key for second VM
         run: |
@@ -103,29 +103,29 @@ jobs:
               sudo kill $PID
               echo "Killed process with PID: $PID"
             else
-              echo "No running process found."
+              echo "No running process found"
             fi
 
             if [ -d "old" ]; then
               sudo rm -rf old
-              echo "Removed existing 'old' directory."
+              echo "Removed existing 'old' directory"
             fi
   
             if [ -d "running" ]; then
               mv running old
-              echo "Renamed 'running' directory to 'old'."
+              echo "Renamed 'running' directory to 'old'"
             else
-              echo "'running' directory not found."
+              echo "'running' directory not found"
             fi
   
             mkdir running
-            echo "Created 'running' directory."
+            echo "Created 'running' directory"
   
             cd running
-            echo "Moved into 'running' directory."
+            echo "Moved into 'running' directory"
   
             git clone https://github.com/bmaest/Web-Portfolio/
-            echo "Cloned repository."
+            echo "Cloned repository"
   
             cd Web-Portfolio
             echo "Moved into 'Web-Portfolio' directory."
