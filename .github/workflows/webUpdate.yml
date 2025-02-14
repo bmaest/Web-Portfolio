@@ -78,7 +78,7 @@ jobs:
           EOF
 
       - name: Wait for application to start
-        run: sleep 30  
+        run: sleep 300  
 
       - name: Verify web server is online
         run: |
