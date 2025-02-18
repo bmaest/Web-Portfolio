@@ -233,6 +233,10 @@ section{
     border: rgb(53,53,53) 0.1rem solid;
     text-align: center;
 }
+.detail-container p{
+    text-align: left;
+    margin-top: 20px;
+}
 .section-container{
     gap: 4rem;
     height: 80%;
@@ -257,6 +261,9 @@ section{
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+.detail-container div article {
+    justify-content: left;
 }
 .article-container{
     display: flex;
