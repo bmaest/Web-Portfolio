@@ -78,7 +78,7 @@ jobs:
           EOF
 
       - name: Wait for application to start
-        run: sleep 30  
+        run: sleep 30 
 
       - name: Verify web server is online
         run: |
@@ -136,7 +136,7 @@ jobs:
 
             export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
             export PATH=$JAVA_HOME/bin:$PATH
-            mvn clean install || { echo 'Maven install failed' ; exit 1; }
+            mvn clean install || { echo "Maven install failed" ; exit 1; }
             echo "Maven install succeeded"
 
             sudo chown -R www-data:www-data /home/ubuntu/running/Web-Portfolio/src/main/resources/static
