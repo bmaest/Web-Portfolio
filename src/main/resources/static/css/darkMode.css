@@ -40,7 +40,7 @@ body.dark-mode{
 }
 .dark-mode .btn-1, .dark-mode .btn-2 {
     color: #eee;
-    background: rgb(0, 0, 0);
+    background: rgb(5, 5, 5);
     border: rgb(202, 202, 202) 0.1rem solid;
 }
 .dark-mode .btn-1:hover, .dark-mode .btn-2:hover {
@@ -48,7 +48,7 @@ body.dark-mode{
     color: black;
 }
 .dark-mode .detail-container {
-    background: black;
+    background: rgb(5, 5, 5);
     border: rgb(202, 202, 202) 0.1rem solid;
 }
 .dark-mode .skills-subtitle {
