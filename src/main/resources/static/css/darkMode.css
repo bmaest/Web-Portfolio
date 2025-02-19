@@ -1,0 +1,78 @@
+/*Dark Mode Button*/
+#darkmode-container {
+    padding: 10px;
+    justify-content: right;
+}
+#darkmode-container img{
+    height: 2vh;
+}
+
+/* Dark mode styles */
+body.dark-mode{
+    background-color: #121212;
+    color: #eee;
+}
+.dark-mode p {
+    color: rgb(170, 170, 170);
+}
+.dark-mode #desktop-nav {
+    color: #eee;
+}
+.dark-mode a {
+    color: #eee;
+    text-decoration-color: #eee;
+}
+.dark-mode a:hover {
+    color: grey;
+    text-decoration-color: rgb(181, 181, 181);
+}
+.dark-mode #nav {
+    color: #eee;
+}
+.dark-mode .icon span {
+    background-color: #eee;
+}
+.dark-mode .menu-links {
+    background-color: black;
+}
+.dark-mode .menu-links a {
+    color: white;
+}
+.dark-mode .btn-1, .dark-mode .btn-2 {
+    color: #eee;
+    background: rgb(0, 0, 0);
+    border: rgb(202, 202, 202) 0.1rem solid;
+}
+.dark-mode .btn-1:hover, .dark-mode .btn-2:hover {
+    background: rgb(255, 255, 255);
+    color: black;
+}
+.dark-mode .detail-container {
+    background: black;
+    border: rgb(202, 202, 202) 0.1rem solid;
+}
+.dark-mode .skills-subtitle {
+    color: rgb(170, 170, 170);
+}
+.dark-mode .color-container {
+    border-color: rgb(92, 92, 92);
+    background: rgb(5, 5, 5);
+}
+.dark-mode .project-title {
+    color: white;
+}
+.dark-mode .project-btn {
+    color: white;
+    border-color: rgb(92, 92, 92);
+}
+.dark-mode .contact-info-upper-container {
+    border: rgb(202, 202, 202) 0.1rem solid;
+    background: rgb(5, 5, 5);
+}
+.dark-mode #contact a {
+    color: white;
+}
+.dark-mode .footer li a {
+    color: white;
+}
+
