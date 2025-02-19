@@ -191,6 +191,7 @@ section{
 }
 .btn-1, .btn-2{
     border: rgb(53,53,53) 0.1rem solid;
+    background: rgb(232,232,232);
 }
 .btn-1:hover, .btn-2:hover{
     cursor: pointer;
@@ -228,7 +229,7 @@ section{
 .detail-container{
     padding: 1.5rem;
     flex: 1;
-    background: white;
+    background: rgb(250, 250, 250);
     border-radius: 2rem;
     border: rgb(53,53,53) 0.1rem solid;
     text-align: center;
