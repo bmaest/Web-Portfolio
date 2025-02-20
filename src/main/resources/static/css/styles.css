@@ -354,11 +354,6 @@ footer{
 .text-container p{
     font-size: 1.5rem;
 }
-.bottom{
-    bottom: 5rem;
-    right: 4rem;
-    transform: rotate(180deg);
-}
 #frame{
     height: 100px;
 }
