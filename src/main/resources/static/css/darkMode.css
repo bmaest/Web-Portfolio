@@ -13,7 +13,7 @@ body.dark-mode{
     color: #eee;
 }
 .dark-mode p {
-    color: rgb(170, 170, 170);
+    color: #ccc;
 }
 .dark-mode #desktop-nav {
     color: #eee;
@@ -75,4 +75,21 @@ body.dark-mode{
 .dark-mode .footer li a {
     color: white;
 }
+.dark-mode #web-project .skills-subtitle {
+    color: #ddd;
+}
+.dark-mode #web-project p, #web-project ul {
+    color: #ccc;
+}
+.dark-mode #web-project li {
+    color: #ccc;
+}
+.dark-mode #web-project a {
+    color: #fff;
+}
+.dark-mode #web-project .web-project-section {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>End-to-End Domain Control</title>
+    <link rel="icon" type="image/x-icon" href="/files/favicon.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/viewport.css" />
+    <link rel="stylesheet" href="/css/darkMode.css" />
+</head>
+<body>
+<nav id="desktop-nav" style="background-image: url('/files/header.jpg');">
+    <div class="logo">Brandon Maestas</div>
+    <div>
+        <ul class="nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#skills">Skills</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="darkmode-container">
+    <img src="/files/moon.webp" alt="Dark Mode" id="dark-mode-icon" class="mode-icon"
+         data-light="/files/moon.webp" data-dark="/files/sun.png" style="cursor: pointer" />
+</div>
+<section id="profile">
+    <div class="section__pic-container">
+        <img src="/files/domainControllerSetup-modified.png" alt="AD Project Snapshot" />
+    </div>
+    <div class="section__text">
+        <p class="section__text__p1">Project Write-Up</p>
+        <h1 class="title">End-to-End Domain Control</h1>
+        <p class="section__text__p2">Active Directory Project</p>
+        <div class="btn-container">
+            <button class="btn btn-2" onclick="window.open('https://github.com/bmaest/Active-Directory-Domain-Deployment')">View Code</button>
+            <button class="btn btn-1" onclick="window.location.href='/#projects'">Back to Projects</button>
+        </div>
+    </div>
+</section>
+
+<section class="section-container" id="web-project">
+    <div id="web-project-flex-wrapper">
+        <div class="about-container">
+            <div class="text-container">
+                <div class="web-project-section">
+                    <h2 class="skills-subtitle">Overview</h2>
+                    <p>
+                        This project demonstrates the deployment of a fully managed Active Directory domain in a simulated enterprise environment using Windows Server 2022 and Windows 11 Pro. The domain architecture supports centralized policy enforcement, secure authentication, network resource access, and department-based segmentation using industry best practices such as the AGDLP access control model.
+                    </p>
+
+                    <h2 class="skills-subtitle">Infrastructure Setup</h2>
+                    <ul>
+                        <li>Created a Windows Server 2022 domain controller in VirtualBox (hostname: <code>dc01</code>)</li>
+                        <li>Configured internal networking with static IP: <code>10.10.10.10</code> / Gateway: <code>10.10.10.1</code></li>
+                        <li>Installed and promoted AD DS, creating a new forest: <code>test.local</code></li>
+                        <li>Verified services post-promotion using <code>dcdiag</code> and DNS resolution tests</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Client Provisioning & Domain Join</h2>
+                    <ul>
+                        <li>Created a Windows 11 Pro VM; bypassed Microsoft account setup using <code>oobe\bypassnro</code></li>
+                        <li>Manually set NIC DNS to <code>10.10.10.10</code> and joined the domain <code>test.local</code></li>
+                        <li>Tested login functionality and access to domain resources</li>
+                        <li>Confirmed share-based access control using test user <strong>Maya Reed</strong></li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Organizational Structure & Access Model</h2>
+                    <p>
+                        The domain is structured to reflect a mid-sized business layout with OUs for each department, user roles defined via Global Groups, and access scoped by Domain Local Groups following the AGDLP model.
+                    </p>
+                    <pre>
+corp.local
+│
+├── OU: HR
+│   ├── Users: HR_Users, HR_Managers
+│   ├── Global Groups:
+│   │   ├─ HR_Users
+│   │   ├─ HR_Managers
+│   │   └─ HR_GPO_Policy
+│   ├── Domain Local Groups:
+│   │   ├─ HR_Share_Read
+│   │   └─ HR_Share_Modify
+│   └── Resources:
+│       └─ \\DC01\HR_Share (Read/Modify)
+│
+├── OU: IT
+│   ├── Users: IT_Admins, IT_Helpdesk
+│   ├── Global Groups:
+│   │   ├─ IT_Admins
+│   │   ├─ IT_Helpdesk
+│   │   └─ IT_GPO_Editors
+│   ├── Domain Local:
+│   │   └─ IT_Servers_Access
+│   └── Resources:
+│       └─ \\DC01\IT_Servers (Full/Admin)
+│
+├── OU: Sales
+│   ├── Users: Sales_Users, Sales_Managers
+│   ├── Global Groups:
+│   │   ├─ Sales_Users
+│   │   ├─ Sales_Managers
+│   │   └─ Sales_RemoteAccess
+│   ├── Domain Local:
+│   │   ├─ Sales_Share_Read
+│   │   └─ Sales_Share_Modify
+│   └── Resources:
+│       └─ \\DC01\Sales_Share (Read/Modify)
+│
+├── OU: Accounting
+│   ├── Users: Accounting_Users, Accounting_Managers
+│   ├── Global Groups:
+│   │   ├─ Accounting_Users
+│   │   ├─ Accounting_Managers
+│   │   └─ Accounting_Software_Users
+│   ├── Domain Local:
+│   │   ├─ Accounting_Share_Read
+│   │   └─ Accounting_Share_Modify
+│   └── Resources:
+│       └─ \\DC01\Accounting_Share (Read/Modify)
+│
+└── OU: Workstations
+    ├── Global Groups:
+    │   ├─ Workstations_All
+    │   ├─ Workstations_IT
+    │   └─ Workstations_HR
+    └── GPOs:
+        ├─ Security Filtering by group
+        └─ Wallpaper and software restrictions
+      </pre>
+
+                    <h2 class="skills-subtitle">Users & Group Mappings</h2>
+                    <p>
+                        Test users were created for each department and assigned to appropriate Global Groups:
+                    </p>
+                    <ul>
+                        <li><strong>HR:</strong> Maya Reed (HR_Users), Oliver Watts (HR_Managers)</li>
+                        <li><strong>IT:</strong> Noah Carter (IT_Admins), Aiden Flores (IT_Helpdesk)</li>
+                        <li><strong>Sales:</strong> Zoe Bennett (Sales_Users), Lucas Rivera (Sales_Managers)</li>
+                        <li><strong>Accounting:</strong> Liam Powell (Accounting_Users), Emma Hughes (Accounting_Managers)</li>
+                    </ul>
+                    <p>
+                        Global Groups were nested into Domain Local Groups to grant access to resources and apply GPOs using standard AGDLP hierarchy. GPO filtering was also used for workstation-based policies based on group membership.
+                    </p>
+
+                    <h2 class="skills-subtitle">Organizational Structure & Security Groups</h2>
+                    <p>
+                        The domain includes Organizational Units (OUs) for <strong>HR, IT, Sales, Accounting,</strong> and <strong>Workstations</strong>. Global groups were used to define user roles and departmental membership, while Domain Local groups managed file shares and GPO targeting.
+                    </p>
+                    <p>
+                        Example:
+                    <ul>
+                        <li><strong>HR_Users</strong> and <strong>HR_Managers</strong> nested into <strong>HR_Share_Read</strong> and <strong>HR_Share_Modify</strong></li>
+                        <li><strong>IT_Admins</strong> and <strong>IT_Helpdesk</strong> granted server-level access via <strong>IT_Servers_Access</strong></li>
+                    </ul>
+                    </p>
+                    <p>
+                        Folder shares such as <code>\\DC01\HR_Share</code> were created with NTFS permissions bound strictly to Domain Local groups.
+                    </p>
+
+                    <h2 class="skills-subtitle">Group Policy Enforcement</h2>
+                    <p>
+                        A series of GPOs were created to enforce account security, drive mapping, wallpapers, and application controls:
+                    </p>
+                    <ul>
+                        <li><strong>Login Security:</strong> hide last signed-in user, enforce lockout after 5 failed attempts (15-minute duration)</li>
+                        <li><strong>Logon Message:</strong> "Authorized Access Only" displayed before login</li>
+                        <li><strong>Inactivity Timeout:</strong> system locks after defined idle period</li>
+                        <li><strong>Wallpapers:</strong> Department-specific images enforced via GPO using <code>\\DC01\Wallpaper\</code> share</li>
+                        <li><strong>Drive Mapping:</strong> GPO Preferences used with item-level targeting to assign network drives based on group membership</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Application Whitelisting</h2>
+                    <p>
+                        Software Restriction Policies (SRP) were implemented using the "Run only specified Windows applications" policy. Each department received a tailored whitelist; a baseline GPO allowed common system apps (e.g., Edge, File Explorer, Task Manager).
+                    </p>
+                    <ul>
+                        <li><strong>Accounting:</strong> Excel, Outlook, QuickBooks, Acrobat</li>
+                        <li><strong>Sales:</strong> Excel, PowerPoint, Chrome, Teams</li>
+                        <li><strong>HR:</strong> WordPad, Acrobat, Outlook, control panel tools</li>
+                        <li><strong>IT:</strong> cmd, PowerShell, regedit, MMC, Putty, Wireshark</li>
+                    </ul>
+                    <p>
+                        Installation files for approved software were hosted on a secured internal share and distributed via GPO or manual execution by authorized users.
+                    </p>
+
+                    <h2 class="skills-subtitle">Sample User Accounts</h2>
+                    <p>
+                        Test users were created to simulate real-world use cases. For example:
+                    </p>
+                    <ul>
+                        <li><strong>Maya Reed</strong> – HR_Users → Read access to <code>HR_Share</code></li>
+                        <li><strong>Lucas Rivera</strong> – Sales_Managers → Modify access to <code>Sales_Share</code></li>
+                        <li><strong>Noah Carter</strong> – IT_Admins → Full access to <code>IT_Servers</code> and delegated GPO rights</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Next Steps</h2>
+                    <p>
+                        Future phases will include application deployment automation (MSI or script-based), secure RDP access, centralized event log forwarding, and PowerShell scripting for dynamic user provisioning and workstation enrollment. Additional layers such as WSUS, file auditing, and system monitoring are also planned.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <aside id="web-project-gallery">
+            <div class="deck-gallery">
+                <div class="gallery-item active">
+                    <img src="/files/domainController.png" alt="Windows Server Manager" />
+                    <p>Domain Controller setup through Windows Server Manager</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/activeDirectoryStructure.png" alt="Active Directory Structure" />
+                    <p>Organizational Units structure in Active Directory</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/clientNetworkConfig.png" alt="Network adapter settings for windows client" />
+                    <p>Static IP and DNS configured for client on internal network</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/nslookupTest.png" alt="CLI nslookup result for dc01.test.local resolving to 10.10.10.10" />
+                    <p>DNS resolution test verifying domain controller registration</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/driveMapping.png" alt="GPMC editor open to User Configuration → Preferences → Windows Settings → Drive Maps for HR OU" />
+                    <p>Drive mappings configured via Group Policy Preferences with item-level targeting </p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/driveNTFSPermissions.png" alt="Security tab showing explicit permissions for HR_Share_Read group" />
+                    <p>File server shares secured via Domain Local group membership</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/networkDrives.png" alt="Windows File Explorer displaying folders like HR_Share, Sales_Share, Accounting_Share under C:\Shares" />
+                    <p>Structured department shares provisioned on domain controller</p>
+                </div>
+            </div>
+            <div class="gallery-controls">
+                <button onclick="changeDeckImage(-1)">&#9664;</button>
+                <button onclick="changeDeckImage(1)">&#9654;</button>
+            </div>
+        </aside>
+    </div>
+</section>
+<footer>
+    <nav id="bottom-nav">
+        <div class="nav-links-container">
+            <ul class="nav-links footer">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</footer>
+<nav id="frame" style="background-image: url('/files/header.jpg');"></nav>
+<script src="/src/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Web Deployment</title>
+    <link rel="icon" type="image/x-icon" href="/files/favicon.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/viewport.css" />
+    <link rel="stylesheet" href="/css/darkMode.css" />
+</head>
+<body>
+<nav id="desktop-nav" style="background-image: url('/files/header.jpg');">
+    <div class="logo">Brandon Maestas</div>
+    <div>
+        <ul class="nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#skills">Skills</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<nav id="nav" style="background-image: url('/files/header.jpg');">
+    <div class="logo">Brandon Maestas</div>
+    <div class="menu">
+        <div class="icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu-links">
+            <ul>
+                <li><a href="/#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="/#skills" onclick="toggleMenu()">Skills</a></li>
+                <li><a href="/#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="/#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="darkmode-container">
+    <img src="/files/moon.webp" alt="Dark Mode" id="dark-mode-icon" class="mode-icon"
+         data-light="/files/moon.webp" data-dark="/files/sun.png" style="cursor: pointer" />
+</div>
+<section id="profile">
+    <div class="section__pic-container">
+        <img src="/files/springBootProject-modified.png" alt="AD Project Snapshot" />
+    </div>
+    <div class="section__text">
+        <p class="section__text__p1">Project Write-Up</p>
+        <h1 class="title">Full Stack Web Deployment</h1>
+        <p class="section__text__p2">Spring Boot Project</p>
+        <div class="btn-container">
+            <button class="btn btn-2" onclick="window.open('https://github.com/bmaest/Web-Portfolio')">View Code</button>
+            <button class="btn btn-1" onclick="window.location.href='/#projects'">Back to Projects</button>
+        </div>
+    </div>
+</section>
+
+<section class="section-container" id="web-project">
+    <div id="web-project-flex-wrapper">
+        <div class="about-container">
+            <div class="text-container">
+                <div class="web-project-section">
+                    <h2 class="skills-subtitle">Overview</h2>
+                    <p>
+                        This project serves as a comprehensive demonstration of full-stack web development and deployment
+                        using Spring Boot. Initially conceived as a personal portfolio, it evolved into an opportunity
+                        to implement a real-world infrastructure workflow—including templating, reverse proxying, server
+                        provisioning, version control, and DNS failover. The architecture is designed to reflect modern
+                        web standards, with an emphasis on security, redundancy, and maintainability.
+                    </p>
+
+                    <h2 class="skills-subtitle">Development & Framework</h2>
+                    <ul>
+                        <li>Built using <strong>Spring Boot</strong> and Java inside <strong>IntelliJ IDEA</strong></li>
+                        <li>Used <code>Thymeleaf</code> templating engine to serve dynamic HTML views, allowing
+                            server-side logic to integrate cleanly into the frontend</li>
+                        <li>Structured routing with controller classes for homepage and individual project write-ups,
+                            following MVC principles</li>
+                        <li>Integrated scoped JavaScript for dark mode toggling and responsive mobile navigation,
+                            enhancing accessibility and interaction</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Repository & Version Control</h2>
+                    <p>
+                        The project followed a clean Maven directory structure, allowing for straightforward dependency
+                        management and builds. All changes were versioned in Git and hosted on GitHub. A feature-branch
+                        workflow was followed, enabling isolated testing before merge and easier debugging through
+                        descriptive commit messages.
+                    </p>
+
+                    <h2 class="skills-subtitle">Linux Server Setup</h2>
+                    <ul>
+                        <li>Provisioned a free-tier <strong>Ubuntu 22.04 VM on Oracle Cloud</strong> running on ARM-based
+                            Ampere processors</li>
+                        <li>Applied security hardening using SSH keys, UFW firewall rules, role-based user separation,
+                            and routine update automation</li>
+                        <li>Installed the following tooling:
+                            <ul>
+                                <li>Java 23.0.2 (for Spring Boot application runtime)</li>
+                                <li>Maven (for clean, repeatable builds)</li>
+                                <li>Git (for versioned deployments via GitHub)</li>
+                                <li>NGINX (to serve as a reverse proxy and SSL terminator)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Reverse Proxy Configuration (NGINX)</h2>
+                    <p>
+                        NGINX was configured to forward all external traffic on port <code>80</code> to the Spring Boot
+                        service on <code>localhost:8080</code>. Proxy headers were added to pass the original host and
+                        IP to the backend. This setup centralizes traffic management and abstracts internal port mapping
+                        from users.
+                    </p>
+                    <pre><code># /etc/nginx/sites-available/portfolio
+server {
+    listen 80;
+    server_name yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:8080/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+          </code></pre>
+
+                    <h2 class="skills-subtitle">SSL & HTTPS</h2>
+                    <ul>
+                        <li>Used <strong>Certbot</strong> to generate and install a Let's Encrypt TLS certificate</li>
+                        <li>Updated NGINX configuration to redirect port 80 traffic to 443 and serve encrypted HTTPS
+                            connections</li>
+                        <li>Scheduled <code>certbot renew</code> via a cron job to ensure auto-renewal and long-term
+                            certificate validity</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Continuous Deployment with GitHub Actions</h2>
+                    <p>
+                        A GitHub Actions YAML workflow was created to deploy changes automatically on push to the main
+                        branch. The script initiates an SSH session to the production server, pulls the latest commit,
+                        rebuilds the Spring Boot project with Maven, and restarts the server daemon using
+                        <code>systemctl</code>. SSH keys and environment variables are securely stored as GitHub
+                        repository secrets.
+                    </p>
+                    <p>
+                        You can view the full YAML deployment workflow
+                        <a href="https://github.com/bmaest/Web-Portfolio/blob/main/.github/workflows/webUpdate.yml" target="_blank">here on GitHub</a>.
+                    </p>
+
+                    <h2 class="skills-subtitle">Redundancy & Failover</h2>
+                    <ul>
+                        <li>Mirrored deployment on a Google Cloud VM with identical OS, tooling, and SSL configuration</li>
+                        <li>Domain routed through <strong>Amazon Route 53</strong>, which manages DNS-level failover routing</li>
+                        <li>Configured two <code>A</code> records with primary/secondary routing policy and health-based failover</li>
+                        <li>Exposed <code>/health</code> endpoints from Spring Boot and linked them to Route 53 health checks</li>
+                        <li>Email notifications enabled for failover events via AWS alert configuration</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Conclusion</h2>
+                    <p>
+                        The final deliverable is a redundant, secure, self-healing portfolio site that integrates best
+                        practices from both web development and infrastructure management. This very website—the one
+                        you're currently viewing—was built and deployed using the architecture detailed above. With
+                        platform-agnostic failover, automated deployments, and responsive theming, it demonstrates
+                        full-stack fluency and operational maturity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <aside id="web-project-gallery">
+            <div class="deck-gallery">
+                <div class="gallery-item active">
+                    <img src="/files/initialSite.png" alt="HTML Code Displayed in a Browser" />
+                    <p>Initial static HTML view before styling</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/styledSite.png" alt="Styled Website Displayed in a Browser" />
+                    <p>Styled layout after applying CSS for structure and theming</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/oracleFreeTier.png" alt="Oracle Free Tier Computer Instance" />
+                    <p>Oracle Always Free Tier – Ampere A1 Compute Instance Overview</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/springBootInitialization.png" alt="Spring Boot Being Launch From Linux CLI" />
+                    <p>Spring Boot service running on Oracle Cloud instance (CLI view)</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/chromeDevTools.png" alt="Website Using SSL" />
+                    <p>Let’s Encrypt SSL successfully installed and verified for HTTPS access</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/githubActionsDeploy.png" alt="Automated Deployment via Github Actions" />
+                    <p>Automated deployment pipeline triggered via GitHub Actions</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/route53Records.png" alt="DNS Records in Route 53 for Domain" />
+                    <p>Amazon Route 53 record set showing active-passive failover setup</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/route53HealthChecks.png" alt="Health Check for Primary Web Server in Route 53" />
+                    <p>DNS-level redundancy configured using Amazon Route 53 failover routing</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/finalWebsiteDesktop.png" alt="Final Web Portfolio with Dark Mode Theming" />
+                    <p>Deployed portfolio with custom UI, routing, and theming enhancements (Displayed on Desktop)
+                    </p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/files/finalWebsiteMobile.png" alt="Final Web Portfolio with Dark Mode Theming" />
+                    <p>Deployed portfolio with custom UI, routing, and theming enhancements (Displayed on Mobile)
+                    </p>
+                </div>
+            </div>
+            <div class="gallery-controls">
+                <button onclick="changeDeckImage(-1)">&#9664;</button>
+                <button onclick="changeDeckImage(1)">&#9654;</button>
+            </div>
+        </aside>
+    </div>
+</section>
+<footer>
+    <nav id="bottom-nav">
+        <div class="nav-links-container">
+            <ul class="nav-links footer">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</footer>
+<nav id="frame" style="background-image: url('/files/header.jpg');"></nav>
+<script src="/src/script.js"></script>
+</body>
+</html>

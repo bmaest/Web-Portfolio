@@ -58,6 +58,20 @@ function getCookie(name) {
     return "";
 }
 
+let currentDeckIndex = 0;
+
+function changeDeckImage(direction) {
+    const items = document.querySelectorAll('.deck-gallery .gallery-item');
+    if (!items.length) return;
+
+    items[currentDeckIndex].classList.remove('active');
+    currentDeckIndex = (currentDeckIndex + direction + items.length) % items.length;
+    items[currentDeckIndex].classList.add('active');
+}
+
+
+
+
 
 
 
