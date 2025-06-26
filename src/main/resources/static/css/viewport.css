@@ -38,7 +38,7 @@
         margin-top: 0;
     }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     #contact, footer{
         height: 40vh;
     }
@@ -84,19 +84,18 @@
     .title{
         font-size: 2rem;
     }
-    pre {
-        font-size: 0.6rem;
-        padding: 0.75rem;
-    }
     .deck-gallery {
         height: 450px;
     }
-}
-@media screen and (max-width: 450px) {
     pre {
         font-size: 0.5rem;
     }
+}
+@media screen and (max-width: 500px) {
     .deck-gallery {
         height: 300px;
+    }
+    pre {
+        font-size: 0.4rem;
     }
 }

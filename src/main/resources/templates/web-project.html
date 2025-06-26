@@ -115,7 +115,9 @@
                         IP to the backend. This setup centralizes traffic management and abstracts internal port mapping
                         from users.
                     </p>
-                    <pre><code># ===========================================
+
+                    <div class="code-wrapper">
+                        <pre><code># ===========================================
 # Original NGINX configuration for initial deployment
 # Acts as a reverse proxy to forward port 80 traffic to the local web application on port 8080
 # Provides basic access routing before SSL and domain-level handling were added
@@ -130,7 +132,8 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
     }
 }
-                    </code></pre>
+                        </code></pre>
+                    </div>
 
                     <h2 class="skills-subtitle">TLS & HTTPS</h2>
                     <p>
@@ -148,7 +151,8 @@ server {
                         After obtaining a TLS certificate, the following NGINX configuration was applied to serve
                         resources securely over HTTPS and guide clients toward encrypted connections.
                     </p>
-                    <pre><code># ===========================================
+                    <div class="code-wrapper">
+                        <pre><code># ===========================================
 # Default server block for IP address access
 # Used primarily for AWS health checks in active/passive failover
 # Ensures that even requests without a Host header receive a valid response
@@ -238,7 +242,8 @@ server {
         expires 1d;  # Enable caching for improved load speed
     }
 }
-                    </code></pre>
+                        </code></pre>
+                    </div>
 
                     <h2 class="skills-subtitle">Continuous Deployment with GitHub Actions</h2>
                     <p>

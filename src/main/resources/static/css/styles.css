@@ -531,3 +531,14 @@ aside {
     border-bottom: 1px dotted #888;
     margin-bottom: 2.5rem;
 }
+.code-wrapper {
+    background: #111;
+    color: #ddd;
+    padding: 1em;
+    border-radius: 8px;
+    overflow-x: auto;
+    max-width: 100%;
+}
+pre code {
+    white-space: pre-wrap;
+}
