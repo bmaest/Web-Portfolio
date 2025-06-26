@@ -84,17 +84,11 @@
     .title{
         font-size: 2rem;
     }
-    .deck-gallery {
-        height: 450px;
-    }
     pre {
         font-size: 0.5rem;
     }
 }
 @media screen and (max-width: 500px) {
-    .deck-gallery {
-        height: 300px;
-    }
     pre {
         font-size: 0.4rem;
     }
