@@ -115,10 +115,14 @@
                         IP to the backend. This setup centralizes traffic management and abstracts internal port mapping
                         from users.
                     </p>
-                    <pre><code># /etc/nginx/sites-available/portfolio
+                    <pre><code># ===========================================
+# Original NGINX configuration for initial deployment
+# Acts as a reverse proxy to forward port 80 traffic to the local web application on port 8080
+# Provides basic access routing before SSL and domain-level handling were added
+# ===========================================
 server {
     listen 80;
-    server_name yourdomain.com;
+    server_name brandonmaestas.com;
 
     location / {
         proxy_pass http://localhost:8080/;
@@ -126,9 +130,13 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
     }
 }
-          </code></pre>
+                    </code></pre>
 
-                    <h2 class="skills-subtitle">SSL & HTTPS</h2>
+                    <h2 class="skills-subtitle">TLS & HTTPS</h2>
+                    <p>
+                        To secure web traffic and enhance trust with encrypted communication, the following steps were
+                        implemented as part of the TLS and HTTPS setup.
+                    </p>
                     <ul>
                         <li>Used <strong>Certbot</strong> to generate and install a Let's Encrypt TLS certificate</li>
                         <li>Updated NGINX configuration to redirect port 80 traffic to 443 and serve encrypted HTTPS
@@ -136,6 +144,101 @@ server {
                         <li>Scheduled <code>certbot renew</code> via a cron job to ensure auto-renewal and long-term
                             certificate validity</li>
                     </ul>
+                    <p>
+                        After obtaining a TLS certificate, the following NGINX configuration was applied to serve
+                        resources securely over HTTPS and guide clients toward encrypted connections.
+                    </p>
+                    <pre><code># ===========================================
+# Default server block for IP address access
+# Used primarily for AWS health checks in active/passive failover
+# Ensures that even requests without a Host header receive a valid response
+# ===========================================
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name "";  # Catch-all for requests without a valid Host header
+
+    # Proxy root to your local backend service
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+
+    # Dedicated health check endpoint for uptime monitoring
+    location /actuator/health {
+        proxy_pass http://localhost:8080/actuator/health;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+}
+
+# ===========================================
+# Redirect all HTTP traffic to HTTPS
+# Reinforces secure communication by default
+# ===========================================
+server {
+    listen 80;
+    listen [::]:80;
+    server_name brandonmaestas.com www.brandonmaestas.com;
+
+    # Force redirect to HTTPS to prevent plaintext traffic
+    return 301 https://$host$request_uri;
+}
+
+# ===========================================
+# Redirect non-www HTTPS requests to www
+# Promotes domain consistency and SEO best practice
+# ===========================================
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name brandonmaestas.com;
+
+    # SSL certificate paths managed by Let's Encrypt via Certbot
+    ssl_certificate /etc/letsencrypt/live/www.brandonmaestas.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.brandonmaestas.com/privkey.pem;
+    include /etc/nginx/snippets/ssl-params.conf;
+
+    # Redirect all traffic to the canonical www subdomain
+    return 301 https://www.brandonmaestas.com$request_uri;
+}
+
+# ===========================================
+# Main HTTPS server block for primary domain
+# Handles user traffic, static assets, and health probes
+# ===========================================
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.brandonmaestas.com;
+
+    ssl_certificate /etc/letsencrypt/live/www.brandonmaestas.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.brandonmaestas.com/privkey.pem;
+    include /etc/nginx/snippets/ssl-params.conf;
+
+    # Forward root requests to backend application
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+
+    # Expose actuator health endpoint for external monitoring tools
+    location /actuator/health {
+        proxy_pass http://localhost:8080/actuator/health;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+
+    # Serve static assets directly from build output for performance
+    # Helps offload content from the backend and improve response times
+    location ~* \.(jpg|jpeg|png|gif|css|js|pdf|svg)$ {
+        root /home/ubuntu/running/Web-Portfolio/src/main/resources/static;
+        expires 1d;  # Enable caching for improved load speed
+    }
+}
+                    </code></pre>
 
                     <h2 class="skills-subtitle">Continuous Deployment with GitHub Actions</h2>
                     <p>
