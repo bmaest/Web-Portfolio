@@ -1,0 +1,162 @@
+﻿<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Selected.Microsoft.ActiveDirectory.Management.ADUser</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">Administrator</S>
+      <S N="SamAccountName">Administrator</S>
+      <Nil N="DisplayName" />
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-17T16:18:36.3816975-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="1">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Guest</S>
+      <S N="SamAccountName">Guest</S>
+      <Nil N="DisplayName" />
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">false</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="2">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">krbtgt</S>
+      <S N="SamAccountName">krbtgt</S>
+      <Nil N="DisplayName" />
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">false</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="3">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Maya Reed</S>
+      <S N="SamAccountName">mayareed</S>
+      <S N="DisplayName">Maya Reed</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-19T13:58:12.9234211-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="4">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Noah Carter</S>
+      <S N="SamAccountName">noahcarter</S>
+      <S N="DisplayName">Noah Carter</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-20T11:24:39.3332417-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="5">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Zoe Bennett</S>
+      <S N="SamAccountName">zoebennett</S>
+      <S N="DisplayName">Zoe Bennett</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-20T11:26:03.7248069-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="6">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Liam Powell</S>
+      <S N="SamAccountName">liampowell</S>
+      <S N="DisplayName">Liam Powell</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-17T19:15:26.9767886-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="7">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Oliver Watts</S>
+      <S N="SamAccountName">oliverwatts</S>
+      <S N="DisplayName">Oliver Watts</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="8">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Aiden Flores</S>
+      <S N="SamAccountName">aidenflores</S>
+      <S N="DisplayName">Aiden Flores</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="9">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Lucas Rivera</S>
+      <S N="SamAccountName">lucasrivera</S>
+      <S N="DisplayName">Lucas Rivera</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="10">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Emma Hughes</S>
+      <S N="SamAccountName">emmahughes</S>
+      <S N="DisplayName">Emma Hughes</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <Nil N="LastLogonDate" />
+    </MS>
+  </Obj>
+  <Obj RefId="11">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">John Doe</S>
+      <S N="SamAccountName">johndoe</S>
+      <S N="DisplayName">John Doe</S>
+      <Nil N="EmailAddress" />
+      <Nil N="Title" />
+      <Nil N="Department" />
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-19T16:36:44.0563705-07:00</DT>
+    </MS>
+  </Obj>
+</Objs>

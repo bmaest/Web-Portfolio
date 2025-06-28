@@ -69,6 +69,68 @@ function changeDeckImage(direction) {
     items[currentDeckIndex].classList.add('active');
 }
 
+function openTerminal() {
+    document.getElementById('powershell-modal').classList.remove('hidden');
+    document.getElementById('powershell-window').innerHTML = '';
+    addPrompt(); // Reinitialize prompt
+}
+
+function closeTerminal() {
+    document.getElementById('powershell-modal').classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const terminal = document.getElementById('powershell-window');
+    addPrompt();
+});
+
+function addPrompt() {
+    const terminal = document.getElementById('powershell-window');
+
+    // Remove 'active' class from previous input
+    const previous = terminal.querySelector('.user-input.active');
+    if (previous) previous.classList.remove('active');
+
+    const prompt = document.createElement('div');
+    prompt.innerHTML = 'PS C:\\Users\\Administrator&gt; <span class="user-input active" contenteditable="true" spellcheck="false">\u200B</span>';
+    terminal.appendChild(prompt);
+
+    const input = prompt.querySelector('.user-input');
+    input.focus();
+
+    prompt.addEventListener('click', () => {
+        input.focus();
+    });
+
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const cmd = input.innerText.replace(/\u200B/g, '').trim();
+            input.contentEditable = false;
+            input.classList.remove('active');
+
+            fetch('/api/command', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ command: cmd })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    appendLine(data.output);
+                    addPrompt();
+                });
+        }
+    });
+}
+
+function appendLine(html) {
+    const terminal = document.getElementById('powershell-window');
+    const line = document.createElement('div');
+    line.innerHTML = html;
+    terminal.appendChild(line);
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
 
 
 

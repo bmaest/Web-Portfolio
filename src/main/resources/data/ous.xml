@@ -1,0 +1,54 @@
+﻿<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Selected.Microsoft.ActiveDirectory.Management.ADOrganizationalUnit</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">Domain Controllers</S>
+      <S N="DistinguishedName">OU=Domain Controllers,DC=test,DC=local</S>
+      <G N="ObjectGUID">45bc7756-87f2-4378-b6e4-15cdd676244b</G>
+    </MS>
+  </Obj>
+  <Obj RefId="1">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">HR</S>
+      <S N="DistinguishedName">OU=HR,DC=test,DC=local</S>
+      <G N="ObjectGUID">57259cb7-f348-408c-afd9-b1096c53a966</G>
+    </MS>
+  </Obj>
+  <Obj RefId="2">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">IT</S>
+      <S N="DistinguishedName">OU=IT,DC=test,DC=local</S>
+      <G N="ObjectGUID">c3f482bc-3068-4368-8df6-69981027339e</G>
+    </MS>
+  </Obj>
+  <Obj RefId="3">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Sales</S>
+      <S N="DistinguishedName">OU=Sales,DC=test,DC=local</S>
+      <G N="ObjectGUID">b9ade7fb-30db-4c61-98d7-f16e1682b349</G>
+    </MS>
+  </Obj>
+  <Obj RefId="4">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Accounting</S>
+      <S N="DistinguishedName">OU=Accounting,DC=test,DC=local</S>
+      <G N="ObjectGUID">a5d817f9-4ee5-44e8-9072-ccf9052a3a5d</G>
+    </MS>
+  </Obj>
+  <Obj RefId="5">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">Workstations</S>
+      <S N="DistinguishedName">OU=Workstations,DC=test,DC=local</S>
+      <G N="ObjectGUID">1b35a597-1923-4e6c-90bc-766235865206</G>
+    </MS>
+  </Obj>
+</Objs>

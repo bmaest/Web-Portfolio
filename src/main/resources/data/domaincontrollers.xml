@@ -1,0 +1,16 @@
+﻿<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Selected.Microsoft.ActiveDirectory.Management.ADDomainController</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">DC01</S>
+      <S N="IPv4Address">10.10.10.10</S>
+      <S N="Site">Default-First-Site-Name</S>
+      <S N="OperatingSystem">Windows Server 2022 Standard Evaluation</S>
+      <B N="IsGlobalCatalog">true</B>
+    </MS>
+  </Obj>
+</Objs>

@@ -1,0 +1,26 @@
+﻿<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Selected.Microsoft.ActiveDirectory.Management.ADComputer</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">DC01</S>
+      <S N="OperatingSystem">Windows Server 2022 Standard Evaluation</S>
+      <S N="IPv4Address">10.10.10.10</S>
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-17T16:16:16.2136331-07:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="1">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="Name">DESKTOP-BV809BH</S>
+      <S N="OperatingSystem">Windows 11 Pro</S>
+      <S N="IPv4Address">10.10.10.11</S>
+      <B N="Enabled">true</B>
+      <DT N="LastLogonDate">2025-06-19T13:40:41.9977248-07:00</DT>
+    </MS>
+  </Obj>
+</Objs>

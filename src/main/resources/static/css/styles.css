@@ -396,10 +396,7 @@ footer{
     padding: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
-}
-#web-project .web-project-section {
     border-left: 4px solid #4ea8de;
-    padding-left: 1.25rem;
 }
 #web-project .web-project-section h2::after {
     content: '';
@@ -538,5 +535,87 @@ pre code {
 aside {
     border-bottom: 1px dotted #888;
     margin-bottom: 2.5rem;
+}
+
+/*Powershell Prompt*/
+/* Modal container */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Hide by default */
+.hidden {
+    display: none;
+}
+
+/* Modal content box */
+.modal-content {
+    width: 90%;
+    max-width: 960px;
+    height: 600px;
+    background-color: #012456;
+    border: 2px solid #1a1a1a;
+    box-shadow: 0 0 20px #000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header bar */
+.modal-header {
+    background-color: #003366;
+    color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+}
+
+/* Close button */
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Terminal window inside modal */
+#powershell-window {
+    flex: 1;
+    padding: 1rem;
+    font-family: 'Cascadia Code', Consolas, monospace;
+    color: white;
+    background-color: #012456;
+    white-space: pre;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.user-input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+.ps-cyan {
+    color: #00ffff; font-weight: bold;
+}
+.ps-white {
+    color: #ffffff;
+}
+.ps-gray {
+    color: #808080; font-style: italic;
+}
+.ps-red  {
+    color: #ff5555; font-weight: bold;
 }
 

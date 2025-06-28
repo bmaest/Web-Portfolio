@@ -1,0 +1,263 @@
+﻿<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Selected.Microsoft.GroupPolicy.Gpo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="DisplayName">Desktop</S>
+      <G N="Id">078195d7-3706-4474-83a8-01650d2b2ad9</G>
+      <Obj N="GpoStatus" RefId="1">
+        <TN RefId="1">
+          <T>Microsoft.GroupPolicy.GpoStatus</T>
+          <T>System.Enum</T>
+          <T>System.ValueType</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-26T16:19:53</DT>
+      <DT N="ModificationTime">2025-06-26T16:19:54</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="2">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">WallpaperSales</S>
+      <G N="Id">14c1ca99-7b81-4492-b46d-171cb808f690</G>
+      <Obj N="GpoStatus" RefId="3">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T11:20:35</DT>
+      <DT N="ModificationTime">2025-06-20T11:21:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="4">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">IT Applications</S>
+      <G N="Id">19f0a660-6126-4088-8b62-3306ad843faa</G>
+      <Obj N="GpoStatus" RefId="5">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T17:07:58</DT>
+      <DT N="ModificationTime">2025-06-20T17:09:44</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="6">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Allowed Applications</S>
+      <G N="Id">22208b4d-fefc-4054-9ff0-5b601b9fb648</G>
+      <Obj N="GpoStatus" RefId="7">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T16:28:48</DT>
+      <DT N="ModificationTime">2025-06-20T18:57:26</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="8">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Default Domain Policy</S>
+      <G N="Id">31b2f340-016d-11d2-945f-00c04fb984f9</G>
+      <Obj N="GpoStatus" RefId="9">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-17T16:14:42</DT>
+      <DT N="ModificationTime">2025-06-17T19:08:22</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="10">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Accouting Applications</S>
+      <G N="Id">359a3476-91fd-48a1-b2ca-6a3d75e038dc</G>
+      <Obj N="GpoStatus" RefId="11">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T16:22:01</DT>
+      <DT N="ModificationTime">2025-06-20T16:58:54</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="12">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Sales Applications</S>
+      <G N="Id">4c513d02-0876-4a5e-ab7b-846f635b472c</G>
+      <Obj N="GpoStatus" RefId="13">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T17:01:58</DT>
+      <DT N="ModificationTime">2025-06-20T17:03:42</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="14">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Login</S>
+      <G N="Id">5a198e92-2231-42a7-b980-63c8835e607f</G>
+      <Obj N="GpoStatus" RefId="15">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T16:56:11</DT>
+      <DT N="ModificationTime">2025-06-19T17:59:00</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="16">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Application Installs</S>
+      <G N="Id">606507cf-c922-405e-893f-a405f798fcc6</G>
+      <Obj N="GpoStatus" RefId="17">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T15:38:48</DT>
+      <DT N="ModificationTime">2025-06-20T19:18:44</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="18">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Default Domain Controllers Policy</S>
+      <G N="Id">6ac1786c-016f-11d2-945f-00c04fb984f9</G>
+      <Obj N="GpoStatus" RefId="19">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-17T16:14:42</DT>
+      <DT N="ModificationTime">2025-06-17T16:14:42</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="20">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">WallpaperAccounting</S>
+      <G N="Id">856e6a68-617c-4ab9-a5d6-ff3e6828f588</G>
+      <Obj N="GpoStatus" RefId="21">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T11:21:14</DT>
+      <DT N="ModificationTime">2025-06-20T11:21:42</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="22">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">WallpaperHR</S>
+      <G N="Id">b07b6145-0d91-4124-ad6a-42f8d23e2745</G>
+      <Obj N="GpoStatus" RefId="23">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T19:25:32</DT>
+      <DT N="ModificationTime">2025-06-20T11:18:36</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="24">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Map_HR_Share</S>
+      <G N="Id">bab23751-b515-4380-9259-40d6c5fc4f60</G>
+      <Obj N="GpoStatus" RefId="25">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T10:44:37</DT>
+      <DT N="ModificationTime">2025-06-19T16:16:30</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="26">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Map_Sales_Share</S>
+      <G N="Id">c74b7a2e-cb8c-4bbb-87fa-cd875d668d7c</G>
+      <Obj N="GpoStatus" RefId="27">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T11:22:19</DT>
+      <DT N="ModificationTime">2025-06-19T16:15:34</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="28">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Map_Accounting_Share</S>
+      <G N="Id">c799806f-8717-44f4-b418-99116a7b6ff6</G>
+      <Obj N="GpoStatus" RefId="29">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T11:24:47</DT>
+      <DT N="ModificationTime">2025-06-19T16:16:56</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="30">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">Map_IT_Share</S>
+      <G N="Id">dd0b1cfc-0752-49db-9002-b64e147fff8d</G>
+      <Obj N="GpoStatus" RefId="31">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-19T11:16:02</DT>
+      <DT N="ModificationTime">2025-06-19T16:16:08</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="32">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">WallpaperIT</S>
+      <G N="Id">e2f0dcec-022a-4f82-92e4-d4ed84d8d330</G>
+      <Obj N="GpoStatus" RefId="33">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T11:18:57</DT>
+      <DT N="ModificationTime">2025-06-20T11:19:52</DT>
+    </MS>
+  </Obj>
+  <Obj RefId="34">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="DisplayName">HR Applications</S>
+      <G N="Id">ecd76453-c148-4a0f-892b-86b4b8c539cb</G>
+      <Obj N="GpoStatus" RefId="35">
+        <TNRef RefId="1" />
+        <ToString>AllSettingsEnabled</ToString>
+        <I32>3</I32>
+      </Obj>
+      <DT N="CreationTime">2025-06-20T17:04:46</DT>
+      <DT N="ModificationTime">2025-06-20T17:05:46</DT>
+    </MS>
+  </Obj>
+</Objs>

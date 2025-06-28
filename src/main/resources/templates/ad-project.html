@@ -21,6 +21,24 @@
         </ul>
     </div>
 </nav>
+<nav id="nav" style="background-image: url('/files/header.jpg');">
+    <div class="logo">Brandon Maestas</div>
+    <div class="menu">
+        <div class="icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu-links">
+            <ul>
+                <li><a href="/#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="/#skills" onclick="toggleMenu()">Skills</a></li>
+                <li><a href="/#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="/#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div id="darkmode-container">
     <img src="/files/moon.webp" alt="Dark Mode" id="dark-mode-icon" class="mode-icon"
          data-light="/files/moon.webp" data-dark="/files/sun.png" style="cursor: pointer" />
@@ -47,7 +65,11 @@
                 <div class="web-project-section">
                     <h2 class="skills-subtitle">Overview</h2>
                     <p>
-                        This project demonstrates the deployment of a fully managed Active Directory domain in a simulated enterprise environment using Windows Server 2022 and Windows 11 Pro. The domain architecture supports centralized policy enforcement, secure authentication, network resource access, and department-based segmentation using industry best practices such as the AGDLP access control model.
+                        This project demonstrates the deployment of a fully managed Active Directory domain in a
+                        simulated enterprise environment using Windows Server 2022 and Windows 11 Pro. The domain
+                        architecture supports centralized policy enforcement, secure authentication, network resource
+                        access, and department-based segmentation using industry best practices such as the AGDLP access
+                        control model.
                     </p>
 
                     <h2 class="skills-subtitle">Infrastructure Setup</h2>
@@ -68,7 +90,9 @@
 
                     <h2 class="skills-subtitle">Organizational Structure & Access Model</h2>
                     <p>
-                        The domain is structured to reflect a mid-sized business layout with OUs for each department, user roles defined via Global Groups, and access scoped by Domain Local Groups following the AGDLP model.
+                        The domain is structured to reflect a mid-sized business layout with OUs for each department,
+                        user roles defined via Global Groups, and access scoped by Domain Local Groups following the
+                        AGDLP model.
                     </p>
                     <pre>
 corp.local
@@ -141,39 +165,51 @@ corp.local
                         <li><strong>Accounting:</strong> Liam Powell (Accounting_Users), Emma Hughes (Accounting_Managers)</li>
                     </ul>
                     <p>
-                        Global Groups were nested into Domain Local Groups to grant access to resources and apply GPOs using standard AGDLP hierarchy. GPO filtering was also used for workstation-based policies based on group membership.
+                        Global Groups were nested into Domain Local Groups to grant access to resources and apply GPOs
+                        using standard AGDLP hierarchy. GPO filtering was also used for workstation-based policies based
+                        on group membership.
                     </p>
 
                     <h2 class="skills-subtitle">Organizational Structure & Security Groups</h2>
                     <p>
-                        The domain includes Organizational Units (OUs) for <strong>HR, IT, Sales, Accounting,</strong> and <strong>Workstations</strong>. Global groups were used to define user roles and departmental membership, while Domain Local groups managed file shares and GPO targeting.
+                        The domain includes Organizational Units (OUs) for <strong>HR, IT, Sales, Accounting,</strong>
+                        and <strong>Workstations</strong>. Global groups were used to define user roles and departmental membership, while Domain Local groups managed file shares and GPO targeting.
                     </p>
                     <p>
                         Example:
                     <ul>
-                        <li><strong>HR_Users</strong> and <strong>HR_Managers</strong> nested into <strong>HR_Share_Read</strong> and <strong>HR_Share_Modify</strong></li>
-                        <li><strong>IT_Admins</strong> and <strong>IT_Helpdesk</strong> granted server-level access via <strong>IT_Servers_Access</strong></li>
+                        <li><strong>HR_Users</strong> and <strong>HR_Managers</strong> nested into <strong>HR_Share_Read
+                        </strong> and <strong>HR_Share_Modify</strong></li>
+                        <li><strong>IT_Admins</strong> and <strong>IT_Helpdesk</strong> granted server-level access via
+                            <strong>IT_Servers_Access</strong></li>
                     </ul>
                     </p>
                     <p>
-                        Folder shares such as <code>\\DC01\HR_Share</code> were created with NTFS permissions bound strictly to Domain Local groups.
+                        Folder shares such as <code>\\DC01\HR_Share</code> were created with NTFS permissions bound
+                        strictly to Domain Local groups.
                     </p>
 
                     <h2 class="skills-subtitle">Group Policy Enforcement</h2>
                     <p>
-                        A series of GPOs were created to enforce account security, drive mapping, wallpapers, and application controls:
+                        A series of GPOs were created to enforce account security, drive mapping, wallpapers, and
+                        application controls:
                     </p>
                     <ul>
-                        <li><strong>Login Security:</strong> hide last signed-in user, enforce lockout after 5 failed attempts (15-minute duration)</li>
+                        <li><strong>Login Security:</strong> hide last signed-in user, enforce lockout after 5 failed
+                            attempts (15-minute duration)</li>
                         <li><strong>Logon Message:</strong> "Authorized Access Only" displayed before login</li>
                         <li><strong>Inactivity Timeout:</strong> system locks after defined idle period</li>
-                        <li><strong>Wallpapers:</strong> Department-specific images enforced via GPO using <code>\\DC01\Wallpaper\</code> share</li>
-                        <li><strong>Drive Mapping:</strong> GPO Preferences used with item-level targeting to assign network drives based on group membership</li>
+                        <li><strong>Wallpapers:</strong> Department-specific images enforced via GPO using
+                            <code>\\DC01\Wallpaper\</code> share</li>
+                        <li><strong>Drive Mapping:</strong> GPO Preferences used with item-level targeting to assign
+                            network drives based on group membership</li>
                     </ul>
 
                     <h2 class="skills-subtitle">Application Whitelisting</h2>
                     <p>
-                        Software Restriction Policies (SRP) were implemented using the "Run only specified Windows applications" policy. Each department received a tailored whitelist; a baseline GPO allowed common system apps (e.g., Edge, File Explorer, Task Manager).
+                        Software Restriction Policies (SRP) were implemented using the "Run only specified Windows
+                        applications" policy. Each department received a tailored whitelist; a baseline GPO allowed
+                        common system apps (e.g., Edge, File Explorer, Task Manager).
                     </p>
                     <ul>
                         <li><strong>Accounting:</strong> Excel, Outlook, QuickBooks, Acrobat</li>
@@ -182,7 +218,8 @@ corp.local
                         <li><strong>IT:</strong> cmd, PowerShell, regedit, MMC, Putty, Wireshark</li>
                     </ul>
                     <p>
-                        Installation files for approved software were hosted on a secured internal share and distributed via GPO or manual execution by authorized users.
+                        Installation files for approved software were hosted on a secured internal share and distributed
+                        via GPO or manual execution by authorized users.
                     </p>
 
                     <h2 class="skills-subtitle">Sample User Accounts</h2>
@@ -195,13 +232,40 @@ corp.local
                         <li><strong>Noah Carter</strong> – IT_Admins → Full access to <code>IT_Servers</code> and delegated GPO rights</li>
                     </ul>
 
+                    <h2 class="skills-subtitle">PowerShell Simulation Console</h2>
+                    <p>
+                        Explore the layout and hierarchy of the mock Active Directory domain, test.local, through this
+                        interactive PowerShell-style environment. Use the cmdlets listed below to navigate OUs, and query users
+                        and computers.
+                    </p>
+                    <ul>
+                        <li><strong>Get-ADUser</strong></li>
+                        <li><strong>Get-ADComputer</strong></li>
+                        <li><strong>More Coming Soon...</strong></li>
+                    </ul>
+                    <button onclick="openTerminal()" class="btn btn-1">Launch PowerShell</button>
+
                     <h2 class="skills-subtitle">Next Steps</h2>
                     <p>
-                        Future phases will include application deployment automation (MSI or script-based), secure RDP access, centralized event log forwarding, and PowerShell scripting for dynamic user provisioning and workstation enrollment. Additional layers such as WSUS, file auditing, and system monitoring are also planned.
+                        Future phases will include application deployment automation (MSI or script-based), secure RDP
+                        access, centralized event log forwarding, and PowerShell scripting for dynamic user provisioning
+                        and workstation enrollment. Additional layers such as WSUS, file auditing, and system monitoring
+                        are also planned.
                     </p>
                 </div>
             </div>
         </div>
+
+        <div id="powershell-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">Windows PowerShell</span>
+                    <button class="modal-close" onclick="closeTerminal()">✕</button>
+                </div>
+                <div id="powershell-window"></div>
+            </div>
+        </div>
+
         <aside id="web-project-gallery">
             <div class="deck-gallery">
                 <div class="gallery-item active">
@@ -244,10 +308,10 @@ corp.local
     <nav id="bottom-nav">
         <div class="nav-links-container">
             <ul class="nav-links footer">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
