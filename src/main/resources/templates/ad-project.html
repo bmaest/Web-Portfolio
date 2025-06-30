@@ -52,7 +52,7 @@
         <h1 class="title">End-to-End Domain Control</h1>
         <p class="section__text__p2">Active Directory Project</p>
         <div class="btn-container">
-            <button class="btn btn-2" onclick="window.open('https://github.com/bmaest/Active-Directory-Domain-Deployment')">View Code</button>
+            <button class="btn btn-2" onclick="window.open('https://github.com/bmaest/AD-Domain-Automation')">View Code</button>
             <button class="btn btn-1" onclick="window.location.href='/#projects'">Back to Projects</button>
         </div>
     </div>
@@ -235,15 +235,21 @@ corp.local
                     <h2 class="skills-subtitle">PowerShell Simulation Console</h2>
                     <p>
                         Explore the layout and hierarchy of the mock Active Directory domain, test.local, through this
-                        interactive PowerShell-style environment. Use the cmdlets listed below to navigate OUs, and query users
-                        and computers.
+                        interactive PowerShell-style environment. Use the cmdlets listed below to query users,
+                        computers, and navigate OUs.
                     </p>
                     <ul>
                         <li><strong>Get-ADUser</strong></li>
                         <li><strong>Get-ADComputer</strong></li>
-                        <li><strong>More Coming Soon...</strong></li>
+                        <li><strong>Get-ADGroup</strong></li>
+                        <li><strong>Get-ADOrganizationalUnit</strong></li>
+                        <li><strong>Get-GPO</strong></li>
+                        <li><strong>Get-ADDomainController</strong></li>
+                        <li><strong>Get-ADGroupMember -Identity "Group"</strong></li>
                     </ul>
-                    <button onclick="openTerminal()" class="btn btn-1">Launch PowerShell</button>
+                    <div class="btn-container">
+                        <button onclick="openTerminal()" class="btn btn-1">Launch PowerShell</button>
+                    </div>
 
                     <h2 class="skills-subtitle">Next Steps</h2>
                     <p>

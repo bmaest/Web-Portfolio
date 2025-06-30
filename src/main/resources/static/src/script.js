@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Site Cookies
 function setCookie(name, value, days) {
     const d = new Date();
     d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -58,6 +59,7 @@ function getCookie(name) {
     return "";
 }
 
+//Photo Gallery
 let currentDeckIndex = 0;
 
 function changeDeckImage(direction) {
@@ -69,6 +71,7 @@ function changeDeckImage(direction) {
     items[currentDeckIndex].classList.add('active');
 }
 
+//PowerShell Terminal
 function openTerminal() {
     document.getElementById('powershell-modal').classList.remove('hidden');
     document.getElementById('powershell-window').innerHTML = '';
@@ -130,18 +133,3 @@ function appendLine(html) {
     terminal.appendChild(line);
     terminal.scrollTop = terminal.scrollHeight;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
