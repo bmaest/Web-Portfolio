@@ -10,7 +10,7 @@
       <S N="OperatingSystem">Windows Server 2022 Standard Evaluation</S>
       <S N="IPv4Address">10.10.10.10</S>
       <B N="Enabled">true</B>
-      <DT N="LastLogonDate">2025-06-17T16:16:16.2136331-07:00</DT>
+      <DT N="LastLogonDate">2025-06-30T14:44:18.0265692-07:00</DT>
     </MS>
   </Obj>
   <Obj RefId="1">
@@ -20,7 +20,7 @@
       <S N="OperatingSystem">Windows 11 Pro</S>
       <S N="IPv4Address">10.10.10.11</S>
       <B N="Enabled">true</B>
-      <DT N="LastLogonDate">2025-06-19T13:40:41.9977248-07:00</DT>
+      <DT N="LastLogonDate">2025-07-01T15:03:11.0414311-07:00</DT>
     </MS>
   </Obj>
 </Objs>

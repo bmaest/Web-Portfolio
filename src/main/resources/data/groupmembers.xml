@@ -53,15 +53,15 @@
   <Obj RefId="6">
     <TNRef RefId="0" />
     <MS>
-      <S N="GroupName">Domain Admins</S>
-      <S N="MemberName">Administrator</S>
-      <S N="MemberType">user</S>
+      <S N="GroupName">Cert Publishers</S>
+      <S N="MemberName">DC01</S>
+      <S N="MemberType">computer</S>
     </MS>
   </Obj>
   <Obj RefId="7">
     <TNRef RefId="0" />
     <MS>
-      <S N="GroupName">Domain Users</S>
+      <S N="GroupName">Domain Admins</S>
       <S N="MemberName">Administrator</S>
       <S N="MemberType">user</S>
     </MS>
@@ -70,7 +70,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">krbtgt</S>
+      <S N="MemberName">Administrator</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -78,7 +78,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Maya Reed</S>
+      <S N="MemberName">krbtgt</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -86,7 +86,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Noah Carter</S>
+      <S N="MemberName">Maya Reed</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -94,7 +94,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Zoe Bennett</S>
+      <S N="MemberName">Noah Carter</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -102,7 +102,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Liam Powell</S>
+      <S N="MemberName">Zoe Bennett</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -110,7 +110,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Oliver Watts</S>
+      <S N="MemberName">Liam Powell</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -118,7 +118,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Aiden Flores</S>
+      <S N="MemberName">Oliver Watts</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -126,7 +126,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Lucas Rivera</S>
+      <S N="MemberName">Aiden Flores</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -134,7 +134,7 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">Emma Hughes</S>
+      <S N="MemberName">Lucas Rivera</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
@@ -142,11 +142,19 @@
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Users</S>
-      <S N="MemberName">John Doe</S>
+      <S N="MemberName">Emma Hughes</S>
       <S N="MemberType">user</S>
     </MS>
   </Obj>
   <Obj RefId="18">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="GroupName">Domain Users</S>
+      <S N="MemberName">John Doe</S>
+      <S N="MemberType">user</S>
+    </MS>
+  </Obj>
+  <Obj RefId="19">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Domain Guests</S>
@@ -154,7 +162,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="19">
+  <Obj RefId="20">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Group Policy Creator Owners</S>
@@ -162,7 +170,23 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="20">
+  <Obj RefId="21">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="GroupName">RAS and IAS Servers</S>
+      <S N="MemberName">DC01</S>
+      <S N="MemberType">computer</S>
+    </MS>
+  </Obj>
+  <Obj RefId="22">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="GroupName">Pre-Windows 2000 Compatible Access</S>
+      <S N="MemberName">DC01</S>
+      <S N="MemberType">computer</S>
+    </MS>
+  </Obj>
+  <Obj RefId="23">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Denied RODC Password Replication Group</S>
@@ -170,7 +194,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="21">
+  <Obj RefId="24">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Denied RODC Password Replication Group</S>
@@ -178,7 +202,15 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="22">
+  <Obj RefId="25">
+    <TNRef RefId="0" />
+    <MS>
+      <S N="GroupName">Denied RODC Password Replication Group</S>
+      <S N="MemberName">DC01</S>
+      <S N="MemberType">computer</S>
+    </MS>
+  </Obj>
+  <Obj RefId="26">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">HR_Users</S>
@@ -186,7 +218,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="23">
+  <Obj RefId="27">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Sales_Users</S>
@@ -194,7 +226,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="24">
+  <Obj RefId="28">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">HR_Managers</S>
@@ -202,7 +234,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="25">
+  <Obj RefId="29">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">HR_Share_Read</S>
@@ -210,7 +242,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="26">
+  <Obj RefId="30">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">HR_Share_Modify</S>
@@ -218,7 +250,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="27">
+  <Obj RefId="31">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">IT_Admins</S>
@@ -226,7 +258,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="28">
+  <Obj RefId="32">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">IT_Helpdesk</S>
@@ -234,7 +266,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="29">
+  <Obj RefId="33">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">IT_Servers_Access</S>
@@ -242,7 +274,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="30">
+  <Obj RefId="34">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">IT_Servers_Access</S>
@@ -250,7 +282,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="31">
+  <Obj RefId="35">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Sales_Managers</S>
@@ -258,7 +290,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="32">
+  <Obj RefId="36">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Sales_Share_Read</S>
@@ -266,7 +298,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="33">
+  <Obj RefId="37">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Sales_Share_Modify</S>
@@ -274,7 +306,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="34">
+  <Obj RefId="38">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Accounting_Managers</S>
@@ -282,7 +314,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="35">
+  <Obj RefId="39">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Accounting_Share_Read</S>
@@ -290,7 +322,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="36">
+  <Obj RefId="40">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Accounting_Share_Modify</S>
@@ -298,7 +330,7 @@
       <S N="MemberType">user</S>
     </MS>
   </Obj>
-  <Obj RefId="37">
+  <Obj RefId="41">
     <TNRef RefId="0" />
     <MS>
       <S N="GroupName">Accounting_Users</S>
