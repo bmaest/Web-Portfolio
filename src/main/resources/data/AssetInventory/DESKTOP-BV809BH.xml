@@ -1,0 +1,12 @@
+<AssetReport ComputerName="DESKTOP-BV809BH" UserName="DESKTOP-BV809BH$" Timestamp="2025-07-08T17:42:36">
+  <SystemInfo OS="Microsoft Windows 11 Pro" CPU="Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz" RAM_GB="3.98" />
+  <Applications>
+    <App Name="Adobe Genuine Service" Version="9.0.0.29" Publisher="Adobe Inc." />
+    <App Name="Microsoft Edge" Version="138.0.3351.65" Publisher="Microsoft Corporation" />
+    <App Name="Microsoft Edge WebView2 Runtime" Version="137.0.3296.93" Publisher="Microsoft Corporation" />
+    <App Name="Adobe Refresh Manager" Version="1.8.0" Publisher="Adobe Systems Incorporated" />
+  </Applications>
+  <Certificates>
+    <Cert Subject="CN=DESKTOP-BV809BH.test.local" Expires="2026-07-03T12:46:30" />
+  </Certificates>
+</AssetReport>

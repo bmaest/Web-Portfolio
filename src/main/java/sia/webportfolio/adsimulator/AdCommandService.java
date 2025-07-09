@@ -378,4 +378,21 @@ public class AdCommandService {
             return "<span class='ps-red'>Error reading group member data: " + escape(e.getMessage()) + "</span>";
         }
     }
+
+    public static String getAssetXml(String computerName) {
+        try {
+            String path = "data/AssetInventory/" + computerName + ".xml";
+            InputStream is = new ClassPathResource(path).getInputStream();
+            StringBuilder sb = new StringBuilder();
+            int ch;
+            while ((ch = is.read()) != -1) {
+                sb.append((char) ch);
+            }
+            return "<pre class='ps-white'>" + escape(sb.toString()) + "</pre>";
+
+        } catch (Exception e) {
+            return "<span class='ps-red'>Error reading asset XML for " + computerName + ": " + escape(e.getMessage()) + "</span>";
+        }
+    }
+
 }

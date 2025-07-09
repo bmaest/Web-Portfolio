@@ -40,6 +40,19 @@ public class CommandController {
                     return Collections.singletonMap("output", "<span class='ps-red'>Missing -Identity parameter.</span>");
                 }
             }
+            else if (command.toLowerCase().startsWith("get-content")) {
+                String[] parts = command.split("(?i)-path", 2);
+                if (parts.length == 2) {
+                    String param = parts[1].trim();
+                    if (param.startsWith("\"") && param.endsWith("\"")) {
+                        param = param.substring(1, param.length() - 1);
+                    }
+                    String fileName = param.substring(param.lastIndexOf("\\") + 1);
+                    return Collections.singletonMap("output", AdCommandService.getAssetXml(fileName.replace(".xml", "")));
+                } else {
+                    return Collections.singletonMap("output", "<span class='ps-red'>Missing -Path parameter.</span>");
+                }
+            }
         }
 
         return Collections.singletonMap("output",

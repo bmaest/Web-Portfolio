@@ -1,0 +1,10 @@
+<AssetReport ComputerName="DC01" UserName="Administrator" Timestamp="2025-07-08T17:44:02">
+  <SystemInfo OS="Microsoft Windows Server 2022 Standard Evaluation" CPU="Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz" RAM_GB="4" />
+  <Applications>
+    <App Name="Microsoft Edge" Version="138.0.3351.65" Publisher="Microsoft Corporation" />
+  </Applications>
+  <Certificates>
+    <Cert Subject="CN=DC01.test.local" Expires="2026-07-01T16:15:34" />
+    <Cert Subject="CN=test-DC01-CA, DC=test, DC=local" Expires="2030-07-01T16:22:05" />
+  </Certificates>
+</AssetReport>

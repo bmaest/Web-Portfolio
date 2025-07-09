@@ -183,11 +183,18 @@ corp.local
                         <li><strong>IT_Admins</strong> and <strong>IT_Helpdesk</strong> granted server-level access via
                             <strong>IT_Servers_Access</strong></li>
                     </ul>
-                    </p>
                     <p>
                         Folder shares such as <code>\\DC01\HR_Share</code> were created with NTFS permissions bound
                         strictly to Domain Local groups.
                     </p>
+                    <p>
+                        Test users were created to simulate real-world use cases. For example:
+                    </p>
+                    <ul>
+                        <li><strong>Maya Reed</strong> – HR_Users → Read access to <code>HR_Share</code></li>
+                        <li><strong>Lucas Rivera</strong> – Sales_Managers → Modify access to <code>Sales_Share</code></li>
+                        <li><strong>Noah Carter</strong> – IT_Admins → Full access to <code>IT_Servers</code> and delegated GPO rights</li>
+                    </ul>
 
                     <h2 class="skills-subtitle">Group Policy Enforcement</h2>
                     <p>
@@ -222,14 +229,38 @@ corp.local
                         via GPO or manual execution by authorized users.
                     </p>
 
-                    <h2 class="skills-subtitle">Sample User Accounts</h2>
+                    <h2 class="skills-subtitle">Certificate Auto-Enrollment</h2>
                     <p>
-                        Test users were created to simulate real-world use cases. For example:
+                        Certificate Services were deployed to issue and manage digital certificates for both users and computers.
+                        Auto-enrollment was configured via GPO to streamline certificate distribution and renewal:
                     </p>
                     <ul>
-                        <li><strong>Maya Reed</strong> – HR_Users → Read access to <code>HR_Share</code></li>
-                        <li><strong>Lucas Rivera</strong> – Sales_Managers → Modify access to <code>Sales_Share</code></li>
-                        <li><strong>Noah Carter</strong> – IT_Admins → Full access to <code>IT_Servers</code> and delegated GPO rights</li>
+                        <li>Configured an Enterprise CA on <code>dc01</code> with user and machine certificate templates</li>
+                        <li>Enabled auto-enrollment via GPO for both <strong>Computer Configuration</strong> and <strong>User Configuration</strong></li>
+                        <li>Verified issuance of certificates in the personal store of domain-joined clients</li>
+                        <li>Tested certificate-based authentication scenarios for future VPN and RDP integration</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">VPN Configuration</h2>
+                    <p>
+                        A VPN solution was implemented to simulate secure remote access to the domain environment:
+                    </p>
+                    <ul>
+                        <li>Configured Routing and Remote Access (RRAS) on <code>dc01</code> to support L2TP/IPsec VPN connections</li>
+                        <li>Created a static IP address pool for VPN clients and enabled NAT routing</li>
+                        <li>Tested VPN connectivity from a Windows 11 client using domain credentials</li>
+                        <li>Verified access to domain resources and DNS resolution over the VPN tunnel</li>
+                    </ul>
+
+                    <h2 class="skills-subtitle">Asset Tracking & Auditing</h2>
+                    <p>
+                        A lightweight asset inventory system was developed to simulate enterprise-grade auditing and reporting:
+                    </p>
+                    <ul>
+                        <li>Created a PowerShell script to collect system info, installed applications, and certificate data from each domain-joined machine</li>
+                        <li>Scheduled the script to run as SYSTEM via GPO, storing output as XML in a hidden network share</li>
+                        <li>Integrated the XML data into the mock AD console for interactive querying</li>
+                        <li>Simulated PowerShell-style commands such as <code>Get-Content -Path "AssetInventory\<em>ComputerName</em>"</code> to display raw XML reports</li>
                     </ul>
 
                     <h2 class="skills-subtitle">PowerShell Simulation Console</h2>
@@ -246,6 +277,7 @@ corp.local
                         <li><strong>Get-GPO</strong></li>
                         <li><strong>Get-ADDomainController</strong></li>
                         <li><strong>Get-ADGroupMember -Identity "Group"</strong></li>
+                        <li><strong>Get-Content -Path "AssetInventory\<em>ComputerName</em>"</strong></li>
                     </ul>
                     <div class="btn-container">
                         <button onclick="openTerminal()" class="btn btn-1">Launch PowerShell</button>
