@@ -91,14 +91,14 @@ jobs:
           done
           echo "First VM is online"
 
-      - name: Set up SSH key for second VM
+      #- name: Set up SSH key for second VM
         #run: |
           #mkdir -p ~/.ssh
           #echo "${{ secrets.ARTIFACT_SSH_KEY2 }}" > ~/.ssh/id_rsa_2
           #chmod 600 ~/.ssh/id_rsa_2
           #ssh-keyscan -p 22 ${{ secrets.ARTIFACT_HOST2 }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to second VM
+      #- name: Deploy to second VM
         #run: |
           #ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_2 bmaes@${{ secrets.ARTIFACT_HOST2 }} << 'EOF'
           
